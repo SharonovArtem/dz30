@@ -1,0 +1,46 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace dzkurs
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int[] numbersToShuffle = new int[10];
+            Random random = new Random();
+
+            for (int i = 0; i < numbersToShuffle.Length; i++)
+            {
+                numbersToShuffle[i] = random.Next(1, 10);
+                Console.Write(numbersToShuffle[i] + " ");
+            }
+
+            Console.WriteLine("\n");
+
+            Shuffle(numbersToShuffle);
+
+            for (int i = 0; i < numbersToShuffle.Length; i++)
+            {
+                Console.Write(numbersToShuffle[i] + " ");
+            }
+        }
+
+        static void Shuffle(int[] numbers)
+        {
+            Random random = new Random();
+
+            for (int i = numbers.Length - 1; i >= 1; i--)
+            {
+                int j = random.Next(i + 1);
+
+                int tempNumbers = numbers[j];
+                numbers[j] = numbers[i];
+                numbers[i] = tempNumbers;
+            }
+        }
+    }
+}
